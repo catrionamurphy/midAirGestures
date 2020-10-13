@@ -50,3 +50,8 @@
 
 ### 11 October 2020
 * *2 hours* add notes on research to wiki
+
+## Week 3
+
+### 13 October 2020
+* *1 hour* Meeting with supervisor & upload minutes
