@@ -9,32 +9,32 @@ Week-by-week plan for the whole project. Update this as you go along.
 
 ## Winter semester
 
-* **Week 1**
-* **Week 2**
-* **Week 3**
-* **Week 4**
-* **Week 5**
-* **Week 6**
-* **Week 7**
-* **Week 8**
-* **Week 9**
-* **Week 10**
-* **Week 11 [PROJECT WEEK]**
-* **Week 12 [PROJECT WEEK]** Status report submitted.
+* **Week 1** Get in touch with advisor
+* **Week 2** Think through ideas, research background information
+* **Week 3** Consolidate ideas on cars, look into leap motion, create user personas etc
+* **Week 4** Summarise papers & start writing literature review
+* **Week 5** Create user surveys on interest in this research & plan, ethics checklist
+* **Week 6** Dev Work 
+* **Week 7** Dev Work/ Analyse surveys
+* **Week 8** Dev Work
+* **Week 9** Dev work & start filling in dissertation headings
+* **Week 10** Dev work & dissertation 
+* **Week 11 [PROJECT WEEK]** Dev work & status report
+* **Week 12 [PROJECT WEEK]** Dev work & status report
 
 ## Winter break
 
 ## Spring Semester
 
-* **Week 13**
-* **Week 14**
-* **Week 15**
-* **Week 16**
-* **Week 17**
-* **Week 19**
-* **Week 20**
-* **Week 21**
-* **Week 22**
-* **Week 23 [TERM ENDS]**
+* **Week 13** User Evaluations & continue dissertation
+* **Week 14** Analyse user evals
+* **Week 15** Diss
+* **Week 16** Diss
+* **Week 17** Diss
+* **Week 19** Diss first draft
+* **Week 20** Diss
+* **Week 21** Diss
+* **Week 22** Final Draft & prepare presentation
+* **Week 23 [TERM ENDS]** Presentation work
 * **Week 24** Dissertation submission deadline and presentations.
 

@@ -55,3 +55,6 @@
 
 ### 13 October 2020
 * *1 hour* Meeting with supervisor & upload minutes
+
+### 14 October 2020
+* *1.5 hours* Rough timeline
