@@ -58,3 +58,4 @@
 
 ### 14 October 2020
 * *1.5 hours* Rough timeline
+* *0.5 hours* Set up leap motion
