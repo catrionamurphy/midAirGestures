@@ -59,3 +59,20 @@
 ### 14 October 2020
 * *1.5 hours* Rough timeline
 * *0.5 hours* Set up leap motion
+* *1 hour* research on Mercedes and update wiki
+
+### 15 October 2020
+* *2 hour* research on Range Rover - looking into brochures, watching videos etc
+
+### 16 October 2020
+* *2.5 hours* Paper Summary - Mid-air gesture in household appliances
+
+### 17 October 2020
+* *1 hour* User Personas
+
+### 18 October 2020
+* *1 hour* User Personas
+* *0.5 hours* User Stories
+
+### 19 October 2020
+* *0.5 hour* Google Nest Article Summary
