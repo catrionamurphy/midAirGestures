@@ -76,3 +76,18 @@
 
 ### 19 October 2020
 * *0.5 hour* Google Nest Article Summary
+* *2 hours* read up on leap motion documents
+
+## Week 4
+
+### 20 October 2020
+* *1 hour* Supervisor Meeting & Write up minutes
+* *1 hour* starting gesture elicitation - look up what it is etc 
+* *0.5 hours* watched Range Rover Videos
+
+### 21 October 2020
+* *1 hour* Wrote up rough draft of Gesture Elicitation Survey
+
+### 22 October 2020
+* *1 hour* Read Euan Freemans Gesture Recognition guide & took notes
+* *1 hour* Wrote up introduction and debrief scripts

@@ -12,7 +12,7 @@ Week-by-week plan for the whole project. Update this as you go along.
 * **Week 1** Get in touch with advisor
 * **Week 2** Think through ideas, research background information
 * **Week 3** Consolidate ideas on cars, look into leap motion, create user personas etc
-* **Week 4** Summarise papers & start writing literature review
+* **Week 4** Gesture Elicitation Survey
 * **Week 5** Create user surveys on interest in this research & plan, ethics checklist
 * **Week 6** Dev Work 
 * **Week 7** Dev Work/ Analyse surveys
