@@ -90,4 +90,16 @@
 
 ### 22 October 2020
 * *1 hour* Read Euan Freemans Gesture Recognition guide & took notes
-* *1 hour* Wrote up introduction and debrief scripts
+* *2 hour* Wrote up introduction & debrief scripts, consent forms and information sheet
+* *1 hour* Sent out and organised consent forms
+
+### 23 October 2020
+* *1 hour* Paper Summary
+
+### 25 October 2020
+* *1 hour* Redownloading and set up Leap Motion Software as it was the wrong version
+* *1 hour* Looked up error messages
+
+### 26 October 2020
+* *1 hour* researched why code wasnt working and python versions, uninstalled anaconda as it was complicating things in vs code
+* *1 hours* Deleted all python related programs, redownloaded python (make sure it was v2.7 as that is what is for leap motion)
