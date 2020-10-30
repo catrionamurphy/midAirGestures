@@ -103,3 +103,15 @@
 ### 26 October 2020
 * *1 hour* researched why code wasnt working and python versions, uninstalled anaconda as it was complicating things in vs code
 * *1 hours* Deleted all python related programs, redownloaded python (make sure it was v2.7 as that is what is for leap motion)
+* *1 hour* Reset all leap motion
+
+## Week 5
+
+### 27 October 2020
+* *1 hour* Supervisor Meeting and type up minutes
+
+### 29 October 2020
+* *3 hours* Surveys with participants
+
+### 30 October 2020
+* *3 hours* Surveys with participants
