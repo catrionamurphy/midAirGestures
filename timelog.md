@@ -115,3 +115,6 @@
 
 ### 30 October 2020
 * *3 hours* Surveys with participants
+
+### 31 October 2020
+* *3 hours* Followed Leap Motion Tutorial
