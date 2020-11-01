@@ -115,6 +115,11 @@
 
 ### 30 October 2020
 * *3 hours* Surveys with participants
+* *1 hour* Read research paper
 
 ### 31 October 2020
 * *3 hours* Followed Leap Motion Tutorial
+
+### 1 November 2020
+* *1 hour* Finished up surveys
+* *2 hours* Completed Tutorial & edited finished program
