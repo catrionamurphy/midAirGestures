@@ -122,4 +122,4 @@
 
 ### 1 November 2020
 * *1 hour* Finished up surveys
-* *2 hours* Completed Tutorial & edited finished program
+* *3 hours* Completed Tutorial & edited finished program
