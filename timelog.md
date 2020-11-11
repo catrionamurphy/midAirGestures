@@ -123,3 +123,28 @@
 ### 1 November 2020
 * *1 hour* Finished up surveys
 * *3 hours* Completed Tutorial & edited finished program
+
+## Week 6
+
+### 3 November 2020
+* *1 hour* Supervisor meeting & write up minutes
+
+### 5 November 2020
+* *0.5 hours* Created tables for inputting gesture data
+* *3 hours* Watched back survey videos and wrote down what each person did for each gesture
+
+### 6 November 2020
+* *2 hours* Continued with surveys
+* *1 hour* Read a paper on mid-air gestures
+
+### 8 November 2020
+* *2 hours* Started colour coding table
+
+### 9 November 2020
+* *1 hour* Continued colour coding
+
+## Week 7
+
+### 10 November 2020
+* *1 hour* Supervisor meeting & type up minutes
+
