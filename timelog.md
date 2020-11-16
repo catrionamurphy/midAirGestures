@@ -148,3 +148,15 @@
 ### 10 November 2020
 * *1 hour* Supervisor meeting & type up minutes
 
+### 11 November 2020
+* *2 hours* Read & Summarised Paper
+
+### 13 November 2020
+* *0.5 hours* Create table with each action and gesture type, containing how many people performed the gesture
+* *2 hours* Half filled this table by manually counting every colour for each action - double check
+
+### 14 November 2020
+* *2 hours* Completed table and made it readable.
+
+### 15 November 2020
+* *3 hours* Created Graphs for every action with the gesture type and how many people did it
