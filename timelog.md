@@ -160,3 +160,7 @@
 
 ### 15 November 2020
 * *3 hours* Created Graphs for every action with the gesture type and how many people did it
+
+### 16 November 2020
+* *3 hours* Analysed Graphs
+* *1 hour* Started planning for second gesture elicitation survey
