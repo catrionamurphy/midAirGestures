@@ -164,3 +164,30 @@
 ### 16 November 2020
 * *3 hours* Analysed Graphs
 * *1 hour* Started planning for second gesture elicitation survey
+
+## Week 8
+
+### 17 November 2020
+* *1 hour* supervisor meeting and type up minutes
+* *2 hours* write summary
+
+
+### 20 November 2020
+* *2 hours* Created survey questions & survey on google forms
+
+### 21 November 2020
+* *3 hours* Took and uploaded videos onto survey - encountered many issues
+
+### 22 November 2020
+* *3 hours* Read & Summarise Paper
+
+### 23 November 2020
+* *1 hour* Finish summary
+* *2 hours* Read new paper & summarise
+* *0.5 hours* Looked over survey results - plan to evaluate
+
+## Week 9
+
+### 24 November 2020
+* Supervisor meeting cancelled
+* *1 hour* Wrote up and sent advisor what I'd completed in past week
