@@ -84,6 +84,7 @@ class SampleListener(Leap.Listener):
 
         # Gesture Data
         colIndex = 0
+        brightIndex = 0
         for gesture in frame.gestures():
             # Circle Data
             if gesture.type == Leap.Gesture.TYPE_CIRCLE:
@@ -134,19 +135,33 @@ class SampleListener(Leap.Listener):
                      swipeProperDirection = "Down"
                      #print "You have swiped down"
 
-
                 colours = ["Ultraviolet", "Spark Blue", "Moonlight", "Racing Red", "Electric Blue", "Limelight", "Amber Glow", "Sunset", "Ice White", "Daylight"]
-                
+                brightness = ["Low", "Medium", "Bright", "Brightest"]
+
                 if swipeProperDirection == "Right":
                     colIndex = colIndex+1
                     colour = colours[colIndex]
+                    print "The Colour of the ambient lighting is " + colour
                 elif swipeProperDirection == "Left":
                     colIndex = colIndex-1
                     colour = colours[colIndex]
+                    print "The Colour of the ambient lighting is " + colour
 
-                print "The Colour of the ambient lighting is " + colour
-                    
-                
+                if swipeProperDirection == "Up":
+                    brightIndex += 1
+                    if brightIndex >= 4:
+                        print "You are at the brightest level"
+                    else:
+                        howBright = brightness[brightIndex]
+                        print "Brightness level is: " + howBright
+                elif swipeProperDirection == "Down":
+                    brightIndex -= 1
+                    if brightIndex < 0:
+                        print "You are at the lowest brightness level"
+                    else:
+                        howBright = brightness[brightIndex]
+                        print "Brightness level is: " + howBright
+
             # Screen Tap Gesture
             if gesture.type == Leap.Gesture.TYPE_SCREEN_TAP:
                 screenTap = ScreenTapGesture(gesture)
@@ -165,7 +180,6 @@ class SampleListener(Leap.Listener):
                 keyTapState = self.state_names[gesture.state]
                 keyTapPosition = str(keyTap.position)
                 keyTapDirection = str(keyTap.direction)
-
 
 def main():
     listener = SampleListener()
