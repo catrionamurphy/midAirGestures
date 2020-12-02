@@ -191,3 +191,19 @@
 ### 24 November 2020
 * Supervisor meeting cancelled
 * *1 hour* Wrote up and sent advisor what I'd completed in past week
+* *2 hours* Continue summary
+
+### 26 November 2020
+* *2 hours* Literature Review
+
+### 30 November 2020
+* *1 hour* Finished up literature review
+* *2 hour* started creating graphs on the follow up survey
+
+## Week 10
+
+### 1 December 2020
+* *3 hours* Created document with graphs & refined graphs as previous ones were incorrect
+
+### 2 December 2020
+* *2 hours* Researched leap motion recognising individual fingers, added swipe gesture interaction
