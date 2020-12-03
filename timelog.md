@@ -12,7 +12,6 @@
 * This timelog should be filled out honestly, regularly (daily) and accurately. It is for *your* benefit.
 * Follow the structure provided, grouping time by weeks.  Quantise time to the half hour.
 
-
 ## Week 1
 
 ### 29 September 2020
@@ -171,7 +170,6 @@
 * *1 hour* supervisor meeting and type up minutes
 * *2 hours* write summary
 
-
 ### 20 November 2020
 * *2 hours* Created survey questions & survey on google forms
 
@@ -194,7 +192,7 @@
 * *2 hours* Continue summary
 
 ### 26 November 2020
-* *2 hours* Literature Review
+* *3 hours* Literature Review
 
 ### 30 November 2020
 * *1 hour* Finished up literature review
@@ -207,3 +205,6 @@
 
 ### 2 December 2020
 * *2 hours* Researched leap motion recognising individual fingers, added swipe gesture interaction
+
+### 3 December 2020
+* *1 hour* Fixed bugs with git/vscode/leap
