@@ -68,6 +68,8 @@ class SampleListener(Leap.Listener):
                 fingerLen = str(finger.length)
                 fingerWidth = str(finger.width)
 
+                #print fingerType
+
                 # Bone Data
                 for b in range(0,4):
                     bone = finger.bone(b)
@@ -107,8 +109,6 @@ class SampleListener(Leap.Listener):
                 circleRadius = str(circle.radius)
                 circleSweptAngle = str(swept_angle* Leap.RAD_TO_DEG)
 
-
-
             # Swipe Data
             if gesture.type == Leap.Gesture.TYPE_SWIPE:
                 swipe = SwipeGesture(gesture)
@@ -139,17 +139,18 @@ class SampleListener(Leap.Listener):
                 brightness = ["Low", "Medium", "Bright", "Brightest"]
 
                 if swipeProperDirection == "Right":
-                    colIndex = colIndex+1
+                    colIndex = (colIndex+1) % len(colours) 
                     colour = colours[colIndex]
                     print "The Colour of the ambient lighting is " + colour
                 elif swipeProperDirection == "Left":
-                    colIndex = colIndex-1
+                    colIndex = (colIndex-1) % len(colours)
                     colour = colours[colIndex]
                     print "The Colour of the ambient lighting is " + colour
 
                 if swipeProperDirection == "Up":
                     brightIndex += 1
                     if brightIndex >= 4:
+                        continue
                         print "You are at the brightest level"
                     else:
                         howBright = brightness[brightIndex]
@@ -157,6 +158,7 @@ class SampleListener(Leap.Listener):
                 elif swipeProperDirection == "Down":
                     brightIndex -= 1
                     if brightIndex < 0:
+                        continue
                         print "You are at the lowest brightness level"
                     else:
                         howBright = brightness[brightIndex]
