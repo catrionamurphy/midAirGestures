@@ -48,11 +48,33 @@ class SampleListener(Leap.Listener):
             palmPosition = str(hand.palm_position)
             normal = hand.palm_normal
             direction = hand.direction
+            handSpeed = hand.palm_velocity
             
             handPitch = str(direction.pitch * Leap.RAD_TO_DEG)
             handRoll = str(normal.roll * Leap.RAD_TO_DEG)
-    
             handYaw = str(direction.yaw * Leap.RAD_TO_DEG)
+
+            strength = hand.grab_strength
+            if strength == 1:
+                #print "pulse"
+                pass
+
+            # Potential swipe up down?
+            prev_frame = controller.frame()
+            hand = prev_frame.hands[0]
+            current_frame = controller.frame(1)
+            current_hand = current_frame.hands[0]
+            print "%d, %d"%(hand.palm_position.y,current_hand.palm_position.y)
+
+            if(hand.palm_position.y-current_hand.palm_position.y > 1):
+                print "up"
+            elif(hand.palm_position.y-current_hand.palm_position.y <-1):
+                print "down"
+            else:
+                print "still"
+
+
+
 
             # Arm Data
             arm = hand.arm
@@ -67,6 +89,13 @@ class SampleListener(Leap.Listener):
                 fingerID = str(finger.id)
                 fingerLen = str(finger.length)
                 fingerWidth = str(finger.width)
+
+                extended = frame.fingers.extended()
+                noFingers = len(extended)
+
+                #print noFingers
+
+
 
                 #print fingerType
 
@@ -141,28 +170,28 @@ class SampleListener(Leap.Listener):
                 if swipeProperDirection == "Right":
                     colIndex = (colIndex+1) % len(colours) 
                     colour = colours[colIndex]
-                    print "The Colour of the ambient lighting is " + colour
+                    #print "The Colour of the ambient lighting is " + colour
                 elif swipeProperDirection == "Left":
                     colIndex = (colIndex-1) % len(colours)
                     colour = colours[colIndex]
-                    print "The Colour of the ambient lighting is " + colour
+                    #print "The Colour of the ambient lighting is " + colour
 
                 if swipeProperDirection == "Up":
                     brightIndex += 1
                     if brightIndex >= 4:
                         continue
-                        print "You are at the brightest level"
+                        #print "You are at the brightest level"
                     else:
                         howBright = brightness[brightIndex]
-                        print "Brightness level is: " + howBright
+                       # print "Brightness level is: " + howBright
                 elif swipeProperDirection == "Down":
                     brightIndex -= 1
                     if brightIndex < 0:
                         continue
-                        print "You are at the lowest brightness level"
+                        #print "You are at the lowest brightness level"
                     else:
                         howBright = brightness[brightIndex]
-                        print "Brightness level is: " + howBright
+                        #print "Brightness level is: " + howBright
 
             # Screen Tap Gesture
             if gesture.type == Leap.Gesture.TYPE_SCREEN_TAP:
@@ -182,6 +211,8 @@ class SampleListener(Leap.Listener):
                 keyTapState = self.state_names[gesture.state]
                 keyTapPosition = str(keyTap.position)
                 keyTapDirection = str(keyTap.direction)
+
+
 
 def main():
     listener = SampleListener()
