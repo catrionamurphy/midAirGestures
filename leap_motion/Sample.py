@@ -60,20 +60,42 @@ class SampleListener(Leap.Listener):
                 pass
 
             # Potential swipe up down?
+            # takes first frame and compares the hand position
             prev_frame = controller.frame()
             hand = prev_frame.hands[0]
             current_frame = controller.frame(1)
             current_hand = current_frame.hands[0]
+            """
             print "%d, %d"%(hand.palm_position.y,current_hand.palm_position.y)
 
             if(hand.palm_position.y-current_hand.palm_position.y > 1):
-                print "up"
+                print "Backwards"
             elif(hand.palm_position.y-current_hand.palm_position.y <-1):
-                print "down"
+                print "Forwards"
             else:
-                print "still"
+                print "Still"
+            
+
+            print "%d, %d"%(hand.palm_position.x,current_hand.palm_position.x)
+
+            if(hand.palm_position.x-current_hand.palm_position.x > 1):
+                print "Right"
+            elif(hand.palm_position.x-current_hand.palm_position.x <-1):
+                print "Left"
+            else:
+                print "Still"
+            """
 
 
+            print "%d, %d"%(hand.palm_position.z,current_hand.palm_position.z)
+
+            if(hand.palm_position.z-current_hand.palm_position.z > 1):
+                print "Down"
+            elif(hand.palm_position.z-current_hand.palm_position.z <-1):
+                print "Up"
+            else:
+                print "Still"
+            
 
 
             # Arm Data
