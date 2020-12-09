@@ -13,6 +13,11 @@ class SampleListener(Leap.Listener):
     bone_names = ["Metacarpal", "Proximal", "Intermediate", "Distal"]
     state_names = ["STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"]
 
+    minFrameCount = 50
+    maxFrameCount = 200
+    frameList = []
+
+
     def on_init(self, controller):
         print "Initialised"
 
@@ -39,8 +44,12 @@ class SampleListener(Leap.Listener):
         timestamp = str(frame.timestamp)
         lenHands = str(len(frame.hands))
         lenFingers = str(len(frame.fingers))
+        
+        fps = frame.current_frames_per_second
 
         for hand in frame.hands:
+            self.frameList.append(hand)
+            
             # Hand Data
             handType = "Left Hand" if hand.is_left else "Right Hand"
 
@@ -54,10 +63,27 @@ class SampleListener(Leap.Listener):
             handRoll = str(normal.roll * Leap.RAD_TO_DEG)
             handYaw = str(direction.yaw * Leap.RAD_TO_DEG)
 
+            #Flash?
+
             strength = hand.grab_strength
             if strength == 1:
                 #print "pulse"
                 pass
+
+            # New Swipe Stuff
+            start_x = self.frameList[0].palm_position.x
+            end_x = self.frameList[-1].palm_position.x
+
+            start_y = self.frameList[0].palm_position.y
+            end_y = self.frameList[-1].palm_position.y
+
+            start_z = self.frameList[0].palm_position.z
+            end_z = self.frameList[-1].palm_position.z
+
+            if len(self.frameList) > self.maxFrameCount:
+                #print "Too Big"
+                self.frameList = []
+                
 
             # Potential swipe up down?
             # takes first frame and compares the hand position
@@ -65,6 +91,33 @@ class SampleListener(Leap.Listener):
             hand = prev_frame.hands[0]
             current_frame = controller.frame(1)
             current_hand = current_frame.hands[0]
+            
+            left_pos = -220
+            right_pos = 250
+
+            swipe_right = False
+            start_left = False
+            end_right = False
+
+            """
+            if hand.palm_position.x = left_pos:
+                start_left = True
+                print "start: " + str(start_left)
+            if current_hand.palm_position.x >= right_pos:
+                end_right = True
+                print "end: " + str(end_right)
+            
+            if start_left == True and end_right == True:
+                swipe_right = True
+                print "You Swiped Right"
+            """
+
+            up_pos = 0
+            down_pos = 0
+
+            forward_pos = 0
+            backwards_pos = 0
+
             """
             print "%d, %d"%(hand.palm_position.y,current_hand.palm_position.y)
 
@@ -72,31 +125,26 @@ class SampleListener(Leap.Listener):
                 print "Backwards"
             elif(hand.palm_position.y-current_hand.palm_position.y <-1):
                 print "Forwards"
-            else:
-                print "Still"
+            """
+            """
             
-
             print "%d, %d"%(hand.palm_position.x,current_hand.palm_position.x)
 
             if(hand.palm_position.x-current_hand.palm_position.x > 1):
                 print "Right"
             elif(hand.palm_position.x-current_hand.palm_position.x <-1):
                 print "Left"
-            else:
-                print "Still"
             """
 
-
+            """
             print "%d, %d"%(hand.palm_position.z,current_hand.palm_position.z)
 
             if(hand.palm_position.z-current_hand.palm_position.z > 1):
                 print "Down"
             elif(hand.palm_position.z-current_hand.palm_position.z <-1):
                 print "Up"
-            else:
-                print "Still"
             
-
+            """
 
             # Arm Data
             arm = hand.arm
