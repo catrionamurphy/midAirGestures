@@ -14,7 +14,7 @@ class SampleListener(Leap.Listener):
     state_names = ["STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"]
     gestures = ["SWIPE_UP", "SWIPE_DOWN", "SWIPE_LEFT", "SWIPE_RIGHT", "COUNT_FINGERS", "DIAL", "FLASH"]
 
-    maxFrameCount = 90
+    maxFrameCount = 150
     frameList = []
 
     def on_init(self, controller):
@@ -74,66 +74,34 @@ class SampleListener(Leap.Listener):
             handRoll = str(normal.roll * Leap.RAD_TO_DEG)
             handYaw = str(direction.yaw * Leap.RAD_TO_DEG)
 
-            #Flash?
+            #Flash
             strength = hand.grab_strength
             if strength == 1:
-                #print "pulse"
                 pass
-
-            # New Swipe Stuff
+            
+            # Swipe Gesture - Up/Down (z), Left/Right(x)
             start_x = self.frameList[0].palm_position.x
             end_x = self.frameList[-1].palm_position.x
-            difference_x = end_x - start_x
-
-            """
-            start_y = self.frameList[0].palm_position.y
-            end_y = self.frameList[-1].palm_position.y
-            difference_y = end_y - start_y
-            absY = abs(difference_y)
-            """
-
             start_z = self.frameList[0].palm_position.z
             end_z = self.frameList[-1].palm_position.z
-            difference_z = end_z - start_z
-
             difference = (end_x - start_x, end_z - start_z)
-            #print difference
+
             absX = abs(difference[0])
             absZ = abs(difference[1])
-
-            """
-            print "start: "
-            print self.frameList[0].palm_position
-            print "end: "
-            print self.frameList[-1].palm_position
-            print "difference: "
-            print difference
-            """
-
+            
             majorAxis = self.getMajorAxis(absX, 0, absZ)           
 
-            #print majorAxis
-
-            if majorAxis == 'x' and abs(difference_x) > 50:
-                if difference_x > 0:
+            if majorAxis == 'x' and absX > 50:
+                if difference[0] > 0:
                     swipeDirection = "Right"
                 else:
                     swipeDirection = "Left"
             
-            elif majorAxis == 'z' and abs(difference_z)>50:
-                if difference_z > 0:
+            elif majorAxis == 'z' and absZ >50:
+                if difference[1] > 0:
                     swipeDirection = "Down"
                 else:
                     swipeDirection = "Up"
-                
-            
-        
-            if len(self.frameList) > self.maxFrameCount:
-                self.frameList = []
-                
-                if swipeDirection <> "":
-                    print swipeDirection
-                
 
             extended = frame.fingers.extended()
             noFingers = len(extended)
@@ -148,13 +116,32 @@ class SampleListener(Leap.Listener):
             elif noFingers == 5:
                 intensityLevel = 5
 
-            # Potential swipe up down?
-            # takes first frame and compares the hand position
-            prev_frame = controller.frame()
-            hand = prev_frame.hands[0]
-            current_frame = controller.frame(1)
-            current_hand = current_frame.hands[0]
+            startFingers = len(self.frameList[0].fingers.extended())
+            endFingers = len(self.frameList[-1].fingers.extended())
+
+            """
+            print "---"
+            print startFingers
+            print endFingers
+            """
+
+            if startFingers == 0 and endFingers == 5:
+                gesture = "Flash"
+            else:
+                gesture = ""
             
+            if len(self.frameList) > self.maxFrameCount:
+                self.frameList = []
+                if gesture == "Flash":
+                    print "Flash"
+                else:
+                    print noFingers
+                
+                if swipeDirection <> "":
+                    print swipeDirection
+                else:
+                    print "hold"
+    
             # Arm Data
             arm = hand.arm
             armDirection = str(arm.direction)

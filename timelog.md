@@ -208,3 +208,21 @@
 
 ### 3 December 2020
 * *1 hour* Fixed bugs with git/vscode/leap
+
+### 4 December
+
+### 7 December 2020
+* *3 hours* Graph Analysis
+* *1 hour* Conclusions
+
+### 8 December 2020
+* *4 hours* Project Lectures
+* *1 hour* Supervisor meeting & write up minutes
+* *2 hours* Restarted swipe gesture
+
+### 9 December 2020
+* *5 hours* Continued with swipe gesture
+* *2 hours* Researched Land Rover Interfaces for display
+
+### 10 December 2020
+* *3 hours* Swipe Gesture
