@@ -14,6 +14,7 @@ class SampleListener(Leap.Listener):
     state_names = ["STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"]
     gestures = ["SWIPE_UP", "SWIPE_DOWN", "SWIPE_LEFT", "SWIPE_RIGHT", "COUNT_FINGERS", "DIAL", "FLASH"]
 
+    counter = 10
     maxFrameCount = 150
     frameList = []
 
@@ -23,10 +24,10 @@ class SampleListener(Leap.Listener):
     def on_connect(self, controller):
         print "Motion Sensor Connected"
 
-        controller.enable_gesture(Leap.Gesture.TYPE_CIRCLE);
-        controller.enable_gesture(Leap.Gesture.TYPE_KEY_TAP);
-        controller.enable_gesture(Leap.Gesture.TYPE_SCREEN_TAP);
-        controller.enable_gesture(Leap.Gesture.TYPE_SWIPE);
+        controller.enable_gesture(Leap.Gesture.TYPE_CIRCLE)
+        controller.enable_gesture(Leap.Gesture.TYPE_KEY_TAP)
+        controller.enable_gesture(Leap.Gesture.TYPE_SCREEN_TAP)
+        controller.enable_gesture(Leap.Gesture.TYPE_SWIPE)
 
     def on_disconnect(self, controller):
         print "Motion Sensor Disconnected"
@@ -70,9 +71,18 @@ class SampleListener(Leap.Listener):
             direction = hand.direction
             handSpeed = hand.palm_velocity
             
-            handPitch = str(direction.pitch * Leap.RAD_TO_DEG)
-            handRoll = str(normal.roll * Leap.RAD_TO_DEG)
-            handYaw = str(direction.yaw * Leap.RAD_TO_DEG)
+            handPitch = (direction.pitch * Leap.RAD_TO_DEG)
+            handRoll = (normal.roll * Leap.RAD_TO_DEG)
+            handYaw = (direction.yaw * Leap.RAD_TO_DEG)
+
+            """
+            if handYaw > 0:
+                print "turn right"
+            elif handYaw < 0:
+                print "turn left"
+            """
+
+            print handYaw
 
             #Flash
             strength = hand.grab_strength
@@ -132,6 +142,8 @@ class SampleListener(Leap.Listener):
             
             if len(self.frameList) > self.maxFrameCount:
                 self.frameList = []
+
+                """
                 if gesture == "Flash":
                     print "Flash"
                 else:
@@ -141,7 +153,8 @@ class SampleListener(Leap.Listener):
                     print swipeDirection
                 else:
                     print "hold"
-    
+                """
+        
             # Arm Data
             arm = hand.arm
             armDirection = str(arm.direction)
@@ -272,10 +285,8 @@ class SampleListener(Leap.Listener):
 def main():
     listener = SampleListener()
     controller = Leap.Controller()
-
     # Have the sample listener receive events from the controller
     controller.add_listener(listener)
-
     # Set Up all the features
     frame = controller.frame()
     previous = controller.frame(1)
