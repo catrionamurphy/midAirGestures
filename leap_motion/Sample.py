@@ -17,6 +17,7 @@ class SampleListener(Leap.Listener):
     counter = 10
     maxFrameCount = 150
     frameList = []
+    actualTemp = 10
 
     def on_init(self, controller):
         print "Initialised"
@@ -39,7 +40,6 @@ class SampleListener(Leap.Listener):
         pass
 
     def getMajorAxis(self,x,y,z):
-        #print x, y, z
         if x > y and x > z:
             return 'x'
         elif y > x and y > z:
@@ -75,16 +75,17 @@ class SampleListener(Leap.Listener):
             handRoll = (normal.roll * Leap.RAD_TO_DEG)
             handYaw = (direction.yaw * Leap.RAD_TO_DEG)
 
-            """
-            if handYaw > 0:
-                print "turn right"
-            elif handYaw < 0:
-                print "turn left"
-            """
+            # ADJUST VOLUME/TEMPERATURE
+            startAngle = self.frameList[0].direction.yaw
+            startAngle = startAngle * Leap.RAD_TO_DEG
+            endAngle = self.frameList[-1].direction.yaw
+            endAngle = endAngle * Leap.RAD_TO_DEG
+            
+            angles = (startAngle,endAngle)
 
-            print handYaw
+            difference_angles = endAngle-startAngle
 
-            #Flash
+            # Grab Strength
             strength = hand.grab_strength
             if strength == 1:
                 pass
@@ -101,18 +102,21 @@ class SampleListener(Leap.Listener):
             
             majorAxis = self.getMajorAxis(absX, 0, absZ)           
 
+            # AMBIENT LIGHTING COLOUR
             if majorAxis == 'x' and absX > 50:
                 if difference[0] > 0:
                     swipeDirection = "Right"
                 else:
                     swipeDirection = "Left"
             
-            elif majorAxis == 'z' and absZ >50:
+            # AMBIENT LIGHTING BRIGHTNESS
+            elif majorAxis == 'z' and absZ > 50:
                 if difference[1] > 0:
                     swipeDirection = "Down"
                 else:
                     swipeDirection = "Up"
 
+            # INTENSITY LEVEL OF MASSAGE CHAIR
             extended = frame.fingers.extended()
             noFingers = len(extended)
             if noFingers == 1:
@@ -126,34 +130,62 @@ class SampleListener(Leap.Listener):
             elif noFingers == 5:
                 intensityLevel = 5
 
+            # PULSE/PULSE DUO FORMAT
             startFingers = len(self.frameList[0].fingers.extended())
             endFingers = len(self.frameList[-1].fingers.extended())
-
-            """
-            print "---"
-            print startFingers
-            print endFingers
-            """
 
             if startFingers == 0 and endFingers == 5:
                 gesture = "Flash"
             else:
                 gesture = ""
             
+            # PRINT DETAILS
             if len(self.frameList) > self.maxFrameCount:
+                # reset number of frames
                 self.frameList = []
 
-                """
+                # AIR CONDITIONING
+                if difference_angles > 0:
+                    temperature = "up"
+                elif difference_angles < 0:
+                    temperature = "down"
+                else:
+                    temperature = "same"
+
+                if temperature == "up" and self.actualTemp < 32:
+                    if difference_angles < 20:
+                        self.actualTemp += 1
+                    elif difference_angles >= 20 and difference_angles < 40:
+                        self.actualTemp += 2
+                    elif difference_angles >= 40 and difference_angles < 80:
+                        self.actualTemp += 3
+                    elif difference_angles >= 80:
+                        self.actualTemp += 5
+                elif temperature == "down" and self.actualTemp > 2:
+                    if difference_angles > -20:
+                        self.actualTemp -= 1
+                    elif difference_angles <= -20 and difference_angles > -40:
+                        self.actualTemp -= 2
+                    elif difference_angles <= -40 and difference_angles > -80:
+                        self.actualTemp -= 3
+                    elif difference_angles <= -80:
+                        self.actualTemp -= 5
+                else:
+                    continue
+
+                # PULSE/ PULSE DUO
                 if gesture == "Flash":
                     print "Flash"
                 else:
                     print noFingers
                 
+                # AMBIENT LIGHTING
                 if swipeDirection <> "":
                     print swipeDirection
                 else:
+                    # HOT STONE MASSAGE
                     print "hold"
-                """
+                
         
             # Arm Data
             arm = hand.arm
@@ -188,15 +220,16 @@ class SampleListener(Leap.Listener):
         brightIndex = 0
         for gesture in frame.gestures():
             # Circle Data
+            # USED FOR TURNING ON/OFF MASSAGE CHAIR??
             if gesture.type == Leap.Gesture.TYPE_CIRCLE:
                 circle = CircleGesture(gesture)
 
                 if circle.pointable.direction.angle_to(circle.normal) <= Leap.PI/2:
                     clockwiseness = "clockwise"
-                    #print "Clockwise Circle"
+                    print "Clockwise Circle"
                 else:
                     clockwiseness = "counter-clockwise"
-                    #print "Counter-Clockwise Circle"
+                    print "Counter-Clockwise Circle"
 
                 swept_angle = 0
                 if circle.state != Leap.Gesture.STATE_START:
@@ -223,16 +256,12 @@ class SampleListener(Leap.Listener):
                 
                 if (swipeDir.x > 0) and math.fabs(swipeDir.x)> math.fabs(swipeDir.y):
                     swipeProperDirection = "Right"
-                    #print "You have swiped right"
                 elif (swipeDir.x < 0) and math.fabs(swipeDir.x)> math.fabs(swipeDir.y):
                      swipeProperDirection = "Left"
-                     #print "You have swiped left"
                 elif (swipeDir.y > 0) and math.fabs(swipeDir.x)< math.fabs(swipeDir.y):
                      swipeProperDirection = "Up"
-                     #print "You have swiped up"
                 elif (swipeDir.y < 0) and math.fabs(swipeDir.x)< math.fabs(swipeDir.y):
                      swipeProperDirection = "Down"
-                     #print "You have swiped down"
 
                 colours = ["Ultraviolet", "Spark Blue", "Moonlight", "Racing Red", "Electric Blue", "Limelight", "Amber Glow", "Sunset", "Ice White", "Daylight"]
                 brightness = ["Low", "Medium", "Bright", "Brightest"]
@@ -240,33 +269,26 @@ class SampleListener(Leap.Listener):
                 if swipeProperDirection == "Right":
                     colIndex = (colIndex+1) % len(colours) 
                     colour = colours[colIndex]
-                    #print "The Colour of the ambient lighting is " + colour
                 elif swipeProperDirection == "Left":
                     colIndex = (colIndex-1) % len(colours)
                     colour = colours[colIndex]
-                    #print "The Colour of the ambient lighting is " + colour
 
                 if swipeProperDirection == "Up":
                     brightIndex += 1
                     if brightIndex >= 4:
                         continue
-                        #print "You are at the brightest level"
                     else:
                         howBright = brightness[brightIndex]
-                       # print "Brightness level is: " + howBright
                 elif swipeProperDirection == "Down":
                     brightIndex -= 1
                     if brightIndex < 0:
                         continue
-                        #print "You are at the lowest brightness level"
                     else:
                         howBright = brightness[brightIndex]
-                        #print "Brightness level is: " + howBright
 
             # Screen Tap Gesture
             if gesture.type == Leap.Gesture.TYPE_SCREEN_TAP:
                 screenTap = ScreenTapGesture(gesture)
-                #print "You have performed a screen tap"
                 screenTapID = str(gesture.id)
                 screenTapState = self.state_names[gesture.state]
                 screenTapPosition = str(screenTap.position)
@@ -276,7 +298,6 @@ class SampleListener(Leap.Listener):
             if gesture.type == Leap.Gesture.TYPE_KEY_TAP:
                 keyTap = KeyTapGesture(gesture)
 
-                #print "You have performed a key tap"
                 keyTapID = str(gesture.id)
                 keyTapState = self.state_names[gesture.state]
                 keyTapPosition = str(keyTap.position)
@@ -285,9 +306,8 @@ class SampleListener(Leap.Listener):
 def main():
     listener = SampleListener()
     controller = Leap.Controller()
-    # Have the sample listener receive events from the controller
     controller.add_listener(listener)
-    # Set Up all the features
+    # Set up all the features
     frame = controller.frame()
     previous = controller.frame(1)
     hands = frame.hands
