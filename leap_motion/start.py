@@ -146,7 +146,6 @@ class SampleListener(Leap.Listener):
             elif majorAxis == 'z':
                 brightnessLevel()
 
-
             # Reset FrameList
             if len(self.frameList) > self.maxFrameCount:
                 self.reset()
@@ -160,9 +159,7 @@ class SampleListener(Leap.Listener):
                     else:
                         clockwiseness = "counter-clockwise"
                         mChair = massageChairOff()
-            
-            
-                
+           
 def main():
     listener = SampleListener()
     controller = Leap.Controller()
