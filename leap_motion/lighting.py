@@ -8,9 +8,41 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap, math
 import pygame
 
+class Slider(pygame.sprite.Sprite):
+    brightnessCounter = 0
+    def __init__(self,img):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = img
+        self.image.set_colorkey((255,255,255))
+        self.rect = self.image.get_rect()
+        self.rect.x = 30
+        self.rect.y = 25
+    def update(self,l):
+        swipeDir = l.swipeDirection
+        if swipeDir == "Up":
+            self.brightnessCounter += 1
+            if self.brightnessCounter > 3:
+                self.brightnessCounter = 3
+        elif swipeDir == "Down":
+            self.brightnessCounter -= 1
+            if self.brightnessCounter < 0:
+                self.brightnessCounter = 0
+        if self.brightnessCounter == 0:
+            self.rect.x = 30
+            self.rect.y = 25
+        elif self.brightnessCounter == 1:
+            self.rect.x = 250
+            self.rect.y = 25
+        elif self.brightnessCounter == 2:
+            self.rect.x = 440
+            self.rect.y = 25
+        elif self.brightnessCounter == 3:
+            self.rect.x = 640
+            self.rect.y = 25
+
 class swipeListener(Leap.Listener):
 
-    maxFrameCount = 90
+    maxFrameCount = 100
     frameList = []
 
     ultraviolet = (127, 0, 255)
@@ -23,7 +55,7 @@ class swipeListener(Leap.Listener):
     limelight = (0, 204, 0)
     sunset = (255, 128, 0)
     racingRed = (255, 0, 0)
-
+    swipeDirection = ""
     colours = [ultraviolet,electricBlue,sparkBlue,moonlight,daylight,iceWhite,amberGlow,limelight,sunset,racingRed]
     colourCounter = 0
     screen = pygame.display.set_mode((750, 500))
@@ -42,18 +74,16 @@ class swipeListener(Leap.Listener):
 
     def getMajorAxis(self,x,y,z):
         if x > y and x > z:
-            
             return 'x'
         elif y > x and y > z:
             return 'y'
         elif z > x and z > y:
-            
             return 'z' 
 
     def on_frame(self, controller):
         
         frame = controller.frame()
-        swipeDirection = ""
+        
         for hand in frame.hands:
             self.frameList.append(hand)
 
@@ -70,49 +100,52 @@ class swipeListener(Leap.Listener):
 
             if majorAxis == 'x' and absX > 50:
                 if difference[0] > 0:
-                    swipeDirection = "Right"
+                    self.swipeDirection = "Right"
                 else:
-                    swipeDirection = "Left"
+                    self.swipeDirection = "Left"
             elif majorAxis == 'z' and absZ > 50:
                 if difference[1] > 0:
-                    swipeDirection = "Down"
+                    self.swipeDirection = "Down"
                 else:
-                    swipeDirection = "Up"
+                    self.swipeDirection = "Up"
             
             if len(self.frameList) > self.maxFrameCount:
                 self.frameList = []
 
-                if swipeDirection <> "":
-                    print swipeDirection
-                    if swipeDirection == "Right":
+                if self.swipeDirection <> "":
+                    print self.swipeDirection
+                    if self.swipeDirection == "Right":
                         self.colourCounter +=1
                         if self.colourCounter>9:
                             self.colourCounter = 0
                         pygame.draw.rect(self.screen,self.colours[self.colourCounter], pygame.Rect(0, 80, 750, 300))
-                    elif swipeDirection == "Left":
+                    elif self.swipeDirection == "Left":
                         self.colourCounter -=1
                         if self.colourCounter <0:
                             self.colourCounter = 9
                         pygame.draw.rect(self.screen,self.colours[self.colourCounter], pygame.Rect(0, 80, 750, 300))
+                    elif self.swipeDirection == "Up":
+                        all_sprites.update(listener)
+                        self.brightnessCounter += 1
+                        if self.brightnessCounter >3:
+                            self.brightnessCounter = 3
+                    elif self.swipeDirection == "Down":
+                        all_sprites.update(listener)
+                        self.brightnessCounter -= 1
+                        if self.brightnessCounter <0:
+                            self.brightnessCounter = 0
 
 def main():
     pygame.init()
+    pygame.mixer.init()
     background_colour = (255,255,255)
     (width, height) = (750,500)
     end_colour = (0,0,0)
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Ambient Lighting")
+    
     screen.fill(background_colour)
-
-    size = (50,50)
-    radius = 25
-    pygame.draw.circle(screen, (0,0,0), (60, 50), 20)
-    pygame.draw.circle(screen, (0,0,0), (280, 50), 20)
-    pygame.draw.circle(screen, (0,0,0), (480, 50), 20)
-    pygame.draw.circle(screen, (0,0,0), (670, 50), 20)
-    pygame.draw.line(screen, (0,0,0), (60,50), (670,50), 10)
-
 
     pygame.draw.rect(screen, (127, 0, 255), pygame.Rect(30, 400, 60, 60))
     pygame.draw.rect(screen, (0, 128, 255), pygame.Rect(100, 400, 60, 60))
@@ -124,41 +157,41 @@ def main():
     pygame.draw.rect(screen, (0, 204, 0), pygame.Rect(520, 400, 60, 60))
     pygame.draw.rect(screen, (255, 128, 0), pygame.Rect(590, 400, 60, 60))
     pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(660, 400, 60, 60))
+    
+    global all_sprites
+    all_sprites = pygame.sprite.Group()
 
+    game_folder = os.path.dirname(__file__)
+    img_folder = os.path.join(game_folder, 'img')
     
-    
+    sliderCircle = pygame.image.load(os.path.join(img_folder, 'circle.png')).convert()
+    sliderCircle = pygame.transform.scale(sliderCircle, (80,60))
+    slider = Slider(sliderCircle) 
+    all_sprites.add(slider)    
+
+    global listener
     listener = swipeListener()
     controller = Leap.Controller()
-    controller.add_listener(listener)
 
-    # Set up all the features
-    frame = controller.frame()
-    previous = controller.frame(1)
-    hands = frame.hands
-    pointables = frame.pointables
-    fingers = frame.fingers
-    tools = frame.tools
-        
     running = True
 
     while running:
-        pygame.display.flip()
-        for event in pygame.event.get():
+        controller.add_listener(listener)
+        
+        pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,750,90))
+        pygame.draw.line(screen, (0,0,0), (60,50), (670,50), 10)
+        pygame.draw.circle(screen, (0,0,0), (60, 50), 15)
+        pygame.draw.circle(screen, (0,0,0), (280, 50), 15)
+        pygame.draw.circle(screen, (0,0,0), (480, 50), 15)
+        pygame.draw.circle(screen, (0,0,0), (670, 50), 15)
 
+        all_sprites.draw(screen)
+        pygame.display.flip()
+
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
                 controller.remove_listener(listener)
-
-    """
-    # Keep this process running until Enter is pressed
-    print "Press Enter to quit..."
-    try:
-        sys.stdin.readline()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        controller.remove_listener(listener)
-    """
 
 if __name__ == "__main__":
     main()
