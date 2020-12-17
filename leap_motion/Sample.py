@@ -21,7 +21,6 @@ class SampleListener(Leap.Listener):
     strengthList = []
     handNo = 0
     
-
     def on_init(self, controller):
         print "Initialised"
 
@@ -165,12 +164,7 @@ class SampleListener(Leap.Listener):
                 if startAngle > 40 and endAngle < 10:
                     champagne_cooler = "OPEN"
             """
-            # WAVE
-
-            #if len(extendedFingers) == 5:
-
-
-
+            
             # PULSE/PULSE DUO FORMAT
             startFingers = len(self.frameList[0].fingers.extended())
             endFingers = len(self.frameList[-1].fingers.extended())
