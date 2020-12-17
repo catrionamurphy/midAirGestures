@@ -12,11 +12,7 @@ class adjustTemp(Leap.Listener):
     frameList = []
     screen = pygame.display.set_mode((750, 500))
     maxFrameCount = 100
-
-    #global actualTemp
     actualTemp = 16
-
-    
 
     def on_init(self, controller):
         print "Initialised"
@@ -61,7 +57,6 @@ class adjustTemp(Leap.Listener):
                     temperature = "same"
 
                 if temperature == "up" and self.actualTemp <= 24:
-                    
                     if difference_angles < 20:
                         if self.actualTemp >23:
                             self.actualTemp = 24
@@ -127,9 +122,7 @@ class Dial(pygame.sprite.Sprite):
         self.image.set_colorkey((0,0,0))
         self.rect = self.image.get_rect()
         self.rect.center = (-250,250)
-
     def update(self, actualTemp):
-        #self.rotate()
         self.colourChange(actualTemp)
         self.numberChange(actualTemp)
     def numberChange(self,actualTemp):
@@ -247,8 +240,6 @@ def main():
 
     pygame.draw.circle(screen, (0,0,0), (375, 250), 100, 10)
 
-    #pygame.draw.polygon(screen, (0,0,0), [(250,270),(330,250),(250, 230)])
-
     listener = adjustTemp()
     controller = Leap.Controller()
     
@@ -257,7 +248,6 @@ def main():
     while running:
         controller.add_listener(listener)
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 running = False
                 controller.remove_listener(listener)
