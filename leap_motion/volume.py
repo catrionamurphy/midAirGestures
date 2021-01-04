@@ -11,7 +11,7 @@ import pygame
 class Volume(Leap.Listener):
     frameList = []
     screen = pygame.display.set_mode((750, 500))
-    maxFrameCount = 300
+    maxFrameCount = 100
     vol = 50
     def on_init(self, controller):
         print "Initialised"
@@ -80,6 +80,8 @@ class Dial(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (-250,250) 
     def update(self, volume):
+        self.rect.center = (-250,250) 
+        #self.screen.fill((0,volume,0))
         self.numberChange(volume)
     def numberChange(self, volume):
         if volume == 0:
@@ -146,7 +148,6 @@ class Dial(pygame.sprite.Sprite):
             if self.image == seventyfive:
                 pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
                 self.rect.center = 375,250
-
 
 
 def main():
@@ -229,6 +230,7 @@ def main():
                 controller.remove_listener(listener)
         all_sprites.draw(screen)
         pygame.display.flip()
+        
 
 if __name__ == "__main__":
     main()

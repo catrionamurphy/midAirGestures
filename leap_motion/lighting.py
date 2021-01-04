@@ -42,7 +42,7 @@ class Slider(pygame.sprite.Sprite):
 
 class swipeListener(Leap.Listener):
 
-    maxFrameCount = 100
+    maxFrameCount = 200
     frameList = []
 
     ultraviolet = (127, 0, 255)
@@ -126,14 +126,18 @@ class swipeListener(Leap.Listener):
                         pygame.draw.rect(self.screen,self.colours[self.colourCounter], pygame.Rect(0, 80, 750, 300))
                     elif self.swipeDirection == "Up":
                         all_sprites.update(listener)
+                        """
                         self.brightnessCounter += 1
                         if self.brightnessCounter >3:
                             self.brightnessCounter = 3
+                        """
                     elif self.swipeDirection == "Down":
                         all_sprites.update(listener)
+                        """
                         self.brightnessCounter -= 1
                         if self.brightnessCounter <0:
                             self.brightnessCounter = 0
+                        """
 
 def main():
     pygame.init()

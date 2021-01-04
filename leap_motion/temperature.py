@@ -41,8 +41,6 @@ class adjustTemp(Leap.Listener):
 
             difference_angles = endAngle-startAngle
 
-            
-
             #print difference_angles
             if len(self.frameList) > self.maxFrameCount:
                 # reset number of frames
@@ -198,7 +196,6 @@ def main():
 
     global sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour
     global red,orange,blue
-    global triangle
 
     sixteen = pygame.image.load(os.path.join(img_folder, 'sixteen.jpg')).convert()
     sixteen = pygame.transform.scale(sixteen, (100,150))
