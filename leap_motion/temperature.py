@@ -193,6 +193,9 @@ def main():
 
     game_folder = os.path.dirname(__file__)
     img_folder = os.path.join(game_folder, 'img')
+    
+    heading = pygame.image.load(os.path.join(img_folder, 'Temperature.png')).convert()
+    heading.set_colorkey((255,255,255))
 
     global sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour
     global red,orange,blue
@@ -249,6 +252,7 @@ def main():
                 running = False
                 controller.remove_listener(listener)
         all_sprites.draw(screen)
+        screen.blit(heading, (110,10))
         pygame.display.flip()
 
 if __name__ == "__main__":

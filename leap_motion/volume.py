@@ -27,7 +27,10 @@ class Volume(Leap.Listener):
 
     def on_frame(self, controller):
         frame = controller.frame()
+
+        pygame.draw.circle(self.screen, (255,0,0), (10,10), 10)
         for hand in frame.hands:
+            pygame.draw.circle(self.screen, (0,255,0), (10,10), 10)
             self.frameList.append(hand)
 
             startAngle = self.frameList[0].direction.yaw
@@ -72,7 +75,6 @@ class Volume(Leap.Listener):
 
 class Dial(pygame.sprite.Sprite):
     screen = pygame.display.set_mode((750, 500))
-    
     def __init__(self,img):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
@@ -166,6 +168,9 @@ def main():
     game_folder = os.path.dirname(__file__)
     img_folder = os.path.join(game_folder, 'img')
 
+    heading = pygame.image.load(os.path.join(img_folder, 'volume.png')).convert()
+    heading.set_colorkey((255,255,255))
+
     global zero, five, ten, fifteen, twenty, twentyfive, thirty, thirtyfive, forty, fortyfive, fifty, fiftyfive, sixty, sixtyfive, seventy, seventyfive, eighty, eightyfive, ninety, ninetyfive, hundred
     
     zero = pygame.image.load(os.path.join(img_folder, 'zero.png')).convert()
@@ -229,6 +234,7 @@ def main():
                 running = False
                 controller.remove_listener(listener)
         all_sprites.draw(screen)
+        screen.blit(heading, (230,10))
         pygame.display.flip()
         
 

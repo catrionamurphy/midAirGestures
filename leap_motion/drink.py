@@ -116,6 +116,9 @@ def main():
     game_folder = os.path.dirname(__file__)
     img_folder = os.path.join(game_folder, 'img')
 
+    heading = pygame.image.load(os.path.join(img_folder, 'cooler2.png')).convert()
+    heading.set_colorkey((255,255,255))
+
     champagne = pygame.image.load(os.path.join(img_folder, 'champers.png')).convert()
 
     champagne = pygame.transform.scale(champagne, (100,300))
@@ -149,6 +152,7 @@ def main():
         screen.fill((0,0,0))
         all_sprites.draw(screen)
         screen.blit(champagne, (220,120))
+        screen.blit(heading, (90,-5))
         pygame.display.flip()
 
 if __name__ == "__main__":
