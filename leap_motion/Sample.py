@@ -69,7 +69,7 @@ class SampleListener(Leap.Listener):
 
             # PULSE/PULSE DUO
             self.strengthList.append(hand.grab_strength)
-            
+            """
             if len(self.strengthList) > 200:
                 for i in range(len(self.strengthList)-1):
                     if self.strengthList[i] == 1 and self.strengthList[i+1] < 1:
@@ -87,7 +87,7 @@ class SampleListener(Leap.Listener):
                     print "too many"  
                 self.strengthList = []   
                 self.counter = 0
-           
+            """
             # Hand Data
             handType = "Left Hand" if hand.is_left else "Right Hand"
 
@@ -261,10 +261,19 @@ class SampleListener(Leap.Listener):
         colIndex = 0
         brightIndex = 0
         for gesture in frame.gestures():
+            print "Circle?"
+            print gesture.type == Leap.Gesture.TYPE_CIRCLE
+            print "Swipe?"
+            print gesture.type == Leap.Gesture.TYPE_SWIPE
+            print "KeyTap?"
+            print gesture.type == Leap.Gesture.TYPE_KEY_TAP
+            print "ScreenTap?"
+            print gesture.type == Leap.Gesture.TYPE_SCREEN_TAP
             # Circle Data
             # USED FOR TURNING ON/OFF MASSAGE CHAIR??
             if gesture.type == Leap.Gesture.TYPE_CIRCLE:
                 circle = CircleGesture(gesture)
+                print "circle"
 
                 if circle.pointable.direction.angle_to(circle.normal) <= Leap.PI/2:
                     clockwiseness = "clockwise"
@@ -283,8 +292,8 @@ class SampleListener(Leap.Listener):
                 circleRadius = str(circle.radius)
                 circleSweptAngle = str(swept_angle* Leap.RAD_TO_DEG)
 
-                
-                if len(extendedFingers) ==5:
+                print len(extendedFingers)
+                if len(extendedFingers) == 4 or len(extendedFingers)==5:
                     if circle.progress < 1:
                         print "hello"
                 

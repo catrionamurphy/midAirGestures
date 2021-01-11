@@ -63,40 +63,40 @@ class Stone(pygame.sprite.Sprite):
         self.image = self.image_original.copy()
         self.rect = self.image.get_rect()
         self.rot = 0
-        self.rot_speed = 10
+        self.rot_speed = 30
         self.last_update = pygame.time.get_ticks()
         if img == rock1:
             self.rect.x = 15
-            self.rect.y = 20
+            self.rect.y = 100
         if img == rock2:
-            self.rect.x = 640
+            self.rect.x = 630
             self.rect.y = 300
         if img == rock3:
-            self.rect.x = 400
+            self.rect.x = 280
             self.rect.y = 200
         if img == rock4:
             self.rect.x = 140
-            self.rect.y = 80
+            self.rect.y = 120
         if img == rock5:
-            self.rect.x = 25
+            self.rect.x = 300
             self.rect.y = 380
         if img == rock6:
             self.rect.x = 600
-            self.rect.y = 50
+            self.rect.y = 90
         if img == rock7:
-            self.rect.x = 300
-            self.rect.y = 280
+            self.rect.x = 500
+            self.rect.y = 370
         if img == rock8:
             self.rect.x = 450
-            self.rect.y = 50
+            self.rect.y = 100
         if img == rock9:
             self.rect.x = 50
-            self.rect.y = 250
+            self.rect.y = 300
     def update(self):
         self.rotate()
     def rotate(self):
         now = pygame.time.get_ticks()
-        if (now - self.last_update) > 100:
+        if (now - self.last_update) > 10:
             self.last_update = now
             self.rot = ((self.rot + self.rot_speed)%360)
             new_image = pygame.transform.rotate(self.image_original, self.rot)
@@ -123,6 +123,9 @@ def main():
 
     game_folder = os.path.dirname(__file__)
     img_folder = os.path.join(game_folder, 'img')
+
+    heading = pygame.image.load(os.path.join(img_folder, 'hotStone.png')).convert()
+    heading.set_colorkey((255,255,255))
 
     global rock1, rock2, rock3, rock4, rock5,rock6, rock7, rock8, rock9
     rock1 = pygame.image.load(os.path.join(img_folder, 'hotRock1.png')).convert()
@@ -156,6 +159,7 @@ def main():
                 controller.remove_listener(listener)
         screen.fill((0,0,0))
         all_sprites.draw(screen)
+        screen.blit(heading, (90,10))
         pygame.display.flip()
 
 

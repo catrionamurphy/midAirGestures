@@ -83,7 +83,8 @@ class swipeListener(Leap.Listener):
     def on_frame(self, controller):
         pygame.draw.circle(self.screen, (255,0,0), (10,490), 10)
         frame = controller.frame()
-        
+        print frame.current_frames_per_second
+
         for hand in frame.hands:
             pygame.draw.circle(self.screen, (0,255,0), (10,490), 10)
             self.frameList.append(hand)
@@ -114,7 +115,6 @@ class swipeListener(Leap.Listener):
             
             if len(self.frameList) > self.maxFrameCount:
                 self.frameList = []
-
                 if self.swipeDirection <> "":
                     print self.swipeDirection
                     if self.swipeDirection == "Right":

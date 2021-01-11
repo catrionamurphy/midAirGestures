@@ -39,7 +39,7 @@ class Massage(Leap.Listener):
             #print "YO"
             #pygame.draw.circle(self.screen, (0,255,0), (10,10), 10)
             if gesture.type == Leap.Gesture.TYPE_CIRCLE:
-                #print "YO"
+                print "circle detected"
                 circle = CircleGesture(gesture)
 
                 if circle.pointable.direction.angle_to(circle.normal) <= Leap.PI/2:
@@ -48,7 +48,7 @@ class Massage(Leap.Listener):
                 else:
                     clockwiseness = "counter-clockwise"
                     massageOn = False
-                #print clockwiseness
+                print clockwiseness
                 #print circle.progress
             
             
@@ -60,38 +60,10 @@ class Massage(Leap.Listener):
                 else:
                     #print "Bye"
                     pygame.draw.circle(self.screen, (255,0,0), (375, 250), 220, 20)
-
-            while massageOn:
-                for hand in frame.hands:
-                    self.frameList.append(hand)
-
-                # INTENSITY LEVEL OF MASSAGE CHAIR
-                    extendedFingers = frame.fingers.extended()
-                    noFingers = len(extendedFingers)
-                    if noFingers == 1:
-                        intensityLevel = 1
-                    elif noFingers == 2:
-                        intensityLevel =2
-                    elif noFingers == 3:
-                        intensityLevel = 3
-                    elif noFingers == 4:
-                        intensityLevel = 4
-                    elif noFingers == 5:
-                        intensityLevel = 5
-
                     
-                    if len(self.frameList) > self.maxFrameCount:
-                        # reset number of frames
-                        self.frameList = []
-                
-
-        """
-        
-        """
 
 def degreesToRadians(deg):
     return deg/180.0 * math.pi
-
 
 # Draw an arc that is a portion of a circle.
 # We pass in screen and color,
