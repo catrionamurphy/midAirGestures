@@ -9,7 +9,6 @@ import Leap, math
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 import pygame
 
-
 class Massage(Leap.Listener):
     state_names = ["STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"]
     frameList = []

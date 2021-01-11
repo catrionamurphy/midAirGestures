@@ -71,7 +71,6 @@ class SampleListener(Leap.Listener):
             self.strengthList.append(hand.grab_strength)
             
             if len(self.strengthList) > 200:
-                
                 for i in range(len(self.strengthList)-1):
                     if self.strengthList[i] == 1 and self.strengthList[i+1] < 1:
                         self.counter += 1

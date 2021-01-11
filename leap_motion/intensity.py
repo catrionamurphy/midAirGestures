@@ -8,12 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap, math
 import pygame
 
-
-
-class pulseListener(Leap.Listener):
-
-    strengthList = []
-
+class IntensityListener(Leap.Listener):
     def on_init(self, controller):
         print "Initialised"
 
@@ -30,33 +25,18 @@ class pulseListener(Leap.Listener):
         frame = controller.frame()
 
         for hand in frame.hands:
-            self.strengthList.append(hand.grab_strength)
-            
-            if len(self.strengthList) > 200:
-                for i in range(len(self.strengthList)-1):
-                    if self.strengthList[i] == 1 and self.strengthList[i+1] < 1:
-                        self.counter += 1
-                    else:
-                        continue
-                if self.counter == 1:
-                    #print self.counter
-                    print "pulse"
-                elif self.counter == 2:
-                    #print self.counter
-                    print "pulse duo"
-                else:
-                    #print self.counter
-                    print "too many"  
-                self.strengthList = []   
-                self.counter = 0
-
-class Orb(pygame.sprite.Sprite):
-    def __init__(self,img):
-        pygame.sprite.Sprite.__init__(self)
-        self.image_original = img
-        self.image_original.set_colorkey((0,0,0))
-    #def update(self):
-
+             extendedFingers = frame.fingers.extended()
+            noFingers = len(extendedFingers)
+            if noFingers == 1:
+                intensityLevel = 1
+            elif noFingers == 2:
+                intensityLevel =2
+            elif noFingers == 3:
+                intensityLevel = 3
+            elif noFingers == 4:
+                intensityLevel = 4
+            elif noFingers == 5:
+                intensityLevel = 5
 
 
 
@@ -67,8 +47,8 @@ def main():
     (width, height) = (750,500)
 
     screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Pulse")
-    
+    pygame.display.set_caption("Intensity Level")
+
     screen.fill(background_colour)
     
     global all_sprites
@@ -76,17 +56,6 @@ def main():
 
     game_folder = os.path.dirname(__file__)
     img_folder = os.path.join(game_folder, 'img')
-
-    pulseCircle = pygame.image.load(os.path.join(img_folder, 'glowCircle.png')).convert()
-    pulseCircle1 = pygame.transform.scale(pulseCircle, (80,60))
-    pulseCircle2 = pygame.transform.scale(pulseCircle, (80,60))
-
-    pulses = [pulseCircle1, pulseCircle2]
-
-    for circle in pulses:
-        circle = Orb(circle)
-        all_sprites.add(circle)
-
 
     global listener
     listener = pulseListener()
@@ -104,6 +73,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
                 controller.remove_listener(listener)
+
 
 if __name__ == "__main__":
     main()
