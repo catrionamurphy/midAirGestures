@@ -8,8 +8,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap, math
 import pygame
 
-
-
 class pulseListener(Leap.Listener):
     
     screen = pygame.display.set_mode((750, 500))
