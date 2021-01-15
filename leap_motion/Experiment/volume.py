@@ -46,35 +46,36 @@ class Volume(Leap.Listener):
                 # reset number of frames
                 self.frameList = []
 
-                if difference_angles > 0:
+                print difference_angles
+                if difference_angles > 5:
                     volume = "up"
-                elif difference_angles < 0:
+                elif difference_angles < -5:
                     volume = "down"
                 else:
                     volume = "same"
 
                 if volume == "up":
-                    print volume
-                    if self.vol > 95:
-                        self.vol = 100
+                    #print volume
+                    if self.vol > 90:
+                        self.vol = 95
                     else:
                         self.vol += 5
-                    print self.vol
+                    #print self.vol
                     all_sprites.update(self.vol)
                 elif volume == "down":
-                    print volume
+                    #print volume
                     if self.vol<5:
                         self.vol = 0
                     else:
                         self.vol -= 5
-                    print self.vol
+                    #print self.vol
                     all_sprites.update(self.vol)
                 else:
                     all_sprites.update(self.vol)
                     
 
 class Dial(pygame.sprite.Sprite):
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300, 700))
     def __init__(self,img):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
@@ -88,75 +89,91 @@ class Dial(pygame.sprite.Sprite):
     def numberChange(self, volume):
         if volume == 0:
             if self.image == zero:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 5:
             if self.image == five:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 10:
             if self.image == ten:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 15:
             if self.image == fifteen:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 20:
             if self.image == twenty:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 25:
             if self.image == twentyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 30:
             if self.image == thirty:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 35:
             if self.image == thirtyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 40:
             if self.image == forty:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 45:
             if self.image == fortyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 50:
             if self.image == fifty:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 55:
             if self.image == fiftyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 60:
             if self.image == sixty:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 65:
             if self.image == sixtyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 70:
             if self.image == seventy:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
         if volume == 75:
             if self.image == seventyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
+        if volume == 80:
+            if self.image == eighty:
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
+        if volume == 85:
+            if self.image == eightyfive:
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
+        if volume == 90:
+            if self.image == ninety:
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
+        if volume == 95:
+            if self.image == ninetyfive:
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                self.rect.center = 650,250
 
 
 def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (255,255,255)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Adjust Volume")
@@ -220,7 +237,7 @@ def main():
         dial = Dial(number)
         all_sprites.add(dial)
     
-    pygame.draw.circle(screen, (0,0,0), (375, 250), 100, 10)
+    pygame.draw.circle(screen, (0,0,0), (650, 250), 100, 10)
 
     listener = Volume()
     controller = Leap.Controller()
@@ -234,7 +251,7 @@ def main():
                 running = False
                 controller.remove_listener(listener)
         all_sprites.draw(screen)
-        screen.blit(heading, (230,10))
+        screen.blit(heading, (500,10))
         pygame.display.flip()
         
 
