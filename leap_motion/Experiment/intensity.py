@@ -10,7 +10,7 @@ import pygame
 
 class IntensityListener(Leap.Listener):
     intensityLevel = 0
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300, 700))
 
     def on_init(self, controller):
         print "Initialised"
@@ -43,11 +43,10 @@ class IntensityListener(Leap.Listener):
                 self.intensityLevel = 4
             elif noFingers == 5:
                 self.intensityLevel = 5
-        print self.intensityLevel
         all_sprites.update(self.intensityLevel)
 
 class Numbers(pygame.sprite.Sprite):
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300, 700))
     def __init__(self,img):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
@@ -59,20 +58,20 @@ class Numbers(pygame.sprite.Sprite):
         self.change(level)
     def change(self,level):
         if level == 1 and self.image == one:
-            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,150,100,200))
-            self.rect.center = 375,250
+            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(600,250,100,200))
+            self.rect.center = 650,350
         if level == 2 and self.image == two:
-            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,150,100,200))
-            self.rect.center = 375,250
+            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(600,250,100,200))
+            self.rect.center = 650,350
         if level == 3 and self.image == three:
-            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,150,100,200))
-            self.rect.center = 375,250
+            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(600,250,100,200))
+            self.rect.center = 650,350
         if level == 4 and self.image == four:
-            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,150,100,200))
-            self.rect.center = 375,250
+            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(600,250,100,200))
+            self.rect.center = 650,350
         if level == 5 and self.image == five:
-            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,150,100,200))
-            self.rect.center = 375,250
+            pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(600,250,100,200))
+            self.rect.center = 650,350
         if level == 0 and (self.image == one or self.image == two or self.image==three or self.image==four or self.image==five):
             self.rect.center = (-250,250)
 
@@ -81,7 +80,7 @@ def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (255,255,255)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Intensity Level")
@@ -129,7 +128,7 @@ def main():
                 running = False
                 controller.remove_listener(listener)
         all_sprites.draw(screen)
-        screen.blit(heading, (90,10))
+        screen.blit(heading, (400,10))
         pygame.display.flip()
 
 

@@ -72,9 +72,9 @@ class drinkListener(Leap.Listener):
         frame = controller.frame()
         for hand in frame.hands:
             self.frameList.append(hand)
-            startAngle = self.frameList[0].direction.yaw
+            startAngle = self.frameList[0].direction.roll
             startAngle = startAngle * Leap.RAD_TO_DEG
-            endAngle = self.frameList[-1].direction.yaw
+            endAngle = self.frameList[-1].direction.roll
             endAngle = endAngle * Leap.RAD_TO_DEG
             
             angles = (startAngle,endAngle)
@@ -88,10 +88,12 @@ class drinkListener(Leap.Listener):
             ring = hand.fingers.finger_type(3)[0]
 
             extendedFingers = hand.fingers.extended()
+            print len(extendedFingers)
 
             if index not in extendedFingers and middle not in extendedFingers and ring not in extendedFingers:
                 #print "DRANKS"
                 if startAngle > 40 and endAngle < 10:
+                    
                     self.champagne_cooler = "OPEN"
               
             if self.champagne_cooler == "OPEN":
