@@ -60,6 +60,7 @@ class Stone(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image_original = img
         self.image_original.set_colorkey((0,0,0))
+        self.image_original = pygame.transform.scale(self.image_original, (200,200))
         self.image = self.image_original.copy()
         self.rect = self.image.get_rect()
         self.rot = 0
@@ -72,10 +73,10 @@ class Stone(pygame.sprite.Sprite):
             self.rect.x = 630
             self.rect.y = 300
         if img == rock3:
-            self.rect.x = 280
-            self.rect.y = 200
+            self.rect.x = 1100
+            self.rect.y = 500
         if img == rock4:
-            self.rect.x = 140
+            self.rect.x = 1000
             self.rect.y = 120
         if img == rock5:
             self.rect.x = 300
@@ -84,14 +85,14 @@ class Stone(pygame.sprite.Sprite):
             self.rect.x = 600
             self.rect.y = 90
         if img == rock7:
-            self.rect.x = 500
-            self.rect.y = 370
+            self.rect.x = 800
+            self.rect.y = 450
         if img == rock8:
-            self.rect.x = 450
+            self.rect.x = 350
             self.rect.y = 100
         if img == rock9:
             self.rect.x = 50
-            self.rect.y = 300
+            self.rect.y = 500
     def update(self):
         self.rotate()
     def rotate(self):
@@ -111,7 +112,7 @@ def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (255,255,255)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Hot Stone Massage")
@@ -159,7 +160,7 @@ def main():
                 controller.remove_listener(listener)
         screen.fill((0,0,0))
         all_sprites.draw(screen)
-        screen.blit(heading, (90,10))
+        screen.blit(heading, (350,10))
         pygame.display.flip()
 
 

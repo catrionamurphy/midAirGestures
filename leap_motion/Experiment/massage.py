@@ -12,7 +12,7 @@ import pygame
 class Massage(Leap.Listener):
     state_names = ["STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END"]
     frameList = []
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300, 700))
 
     def on_init(self, controller):
         print "Initialised"
@@ -36,8 +36,6 @@ class Massage(Leap.Listener):
         
 
         for gesture in frame.gestures():
-            #print "YO"
-            #pygame.draw.circle(self.screen, (0,255,0), (10,10), 10)
             if gesture.type == Leap.Gesture.TYPE_CIRCLE:
                 print "circle detected"
                 circle = CircleGesture(gesture)
@@ -49,17 +47,12 @@ class Massage(Leap.Listener):
                     clockwiseness = "counter-clockwise"
                     massageOn = False
                 print clockwiseness
-                #print circle.progress
-            
             
             if circle.progress >= 0.8:
-                #print clockwiseness
                 if massageOn:
-                    #print "hello"
-                    pygame.draw.circle(self.screen, (0,200,0), (375, 250), 220, 20)
+                    pygame.draw.circle(self.screen, (0,200,0), (650, 350), 220, 20)
                 else:
-                    #print "Bye"
-                    pygame.draw.circle(self.screen, (255,0,0), (375, 250), 220, 20)
+                    pygame.draw.circle(self.screen, (255,0,0), (650, 350), 220, 20)
                     
 
 def degreesToRadians(deg):
@@ -79,28 +72,30 @@ def drawCircleArc(screen,color,center,radius,startDeg,endDeg,thickness):
    
     pygame.draw.arc(screen,color,rect,startRad,endRad,thickness)
     
-
 def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (255,255,255)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
     end_colour = (0,0,0)
 
     screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Ambient Lighting")
+    pygame.display.set_caption("Massage Chair")
     
     screen.fill(background_colour)
     
-    pygame.draw.circle(screen, (0,0,0), (375, 250), 200, 10)
-    drawCircleArc(screen, (0,0,0), (375, 250), 150, 120, 420,10)
-    pygame.draw.line(screen, (0,0,0),(375,80),(375,180),20)
+    pygame.draw.circle(screen, (0,0,0), (650, 350), 200, 10)
+    drawCircleArc(screen, (0,0,0), (650, 350), 150, 120, 420,10)
+    pygame.draw.line(screen, (0,0,0),(650,180),(650,280),20)
 
     global all_sprites
     all_sprites = pygame.sprite.Group()
 
     game_folder = os.path.dirname(__file__)
     img_folder = os.path.join(game_folder, 'img')
+    
+    heading = pygame.image.load(os.path.join(img_folder, 'massage.png')).convert()
+    heading.set_colorkey((255,255,255))
 
     listener = Massage()
     controller = Leap.Controller()
@@ -109,14 +104,13 @@ def main():
 
     while running:
         controller.add_listener(listener)
-
-        all_sprites.draw(screen)
-        pygame.display.flip()
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
                 controller.remove_listener(listener)
+        all_sprites.draw(screen)
+        screen.blit(heading, (400,0))
+        pygame.display.flip()
 
 if __name__ == "__main__":
     main()

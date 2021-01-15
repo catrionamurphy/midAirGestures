@@ -10,12 +10,12 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 import pygame
 
 class WaveListener(Leap.Listener):
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300, 700))
     frequency = 4
     amplitude = 50
     speed = 1
 
-    surface = pygame.Surface((750, 500))
+    surface = pygame.Surface((1300, 700))
     surface.fill((0,0,0))
 
     def on_init(self, controller):
@@ -32,7 +32,7 @@ class WaveListener(Leap.Listener):
         print "Exit"
 
     def wave(self, startPos, colour):
-        for x in range(0,750):
+        for x in range(0,1300):
             y = int((startPos + self.amplitude*math.sin(self.frequency*((float(x)/750)* (2*math.pi)+ (self.speed*time.time())))))
             self.screen.set_at((x, y), (colour))
         #self.screen.blit(self.surface,(0,0))
@@ -56,12 +56,15 @@ class WaveListener(Leap.Listener):
                         self.wave(250,(0,0,255))
                         self.wave(200,(0,80,150))
                         self.wave(300,(0,100,200))
+                        self.wave(400,(30,80,200))
+                        self.wave(450,(100,0,200))
+                        self.wave(500,(250,250,250))
 
 def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (0,0,0)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
 
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((width, height))
@@ -85,7 +88,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
                 controller.remove_listener(listener)
-        screen.blit(heading, (110,-10))
+        screen.blit(heading, (400,-10))
         pygame.display.flip()
         
 

@@ -10,7 +10,7 @@ import pygame
 
 class pulseListener(Leap.Listener):
     
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300,700))
     strengthList = []
     counter = 0
     def on_init(self, controller):
@@ -54,7 +54,7 @@ class pulseListener(Leap.Listener):
                 self.counter = 0
 
 class Orb(pygame.sprite.Sprite):
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300,700))
     def __init__(self,img):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
@@ -69,22 +69,22 @@ class Orb(pygame.sprite.Sprite):
             self.pulseDuo()
     def pulse(self):
         if self.image == pulseCircle1:
-            self.rect.center = 375, 250
+            self.rect.center = 650, 350
         else:
             self.rect.center == -250,250
     def pulseDuo(self):
         if self.image == pulseCircle1:
-            self.rect.center = 200,250
+            self.rect.center = 400,350
         else:
-            self.rect.center = 550,250
+            self.rect.center = 950,350
 
 def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (0,0,0)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
 
-    screen = pygame.display.set_mode((width, height))
+    screen = pygame.display.set_mode((1300,700))
     pygame.display.set_caption("Pulse")
     
     screen.fill(background_colour)
@@ -109,7 +109,10 @@ def main():
         circle = Orb(circle)
         all_sprites.add(circle)
 
-    global listener
+    heading = pygame.image.load(os.path.join(img_folder, 'pulse.png')).convert()
+    heading.set_colorkey((255,255,255))
+
+
     listener = pulseListener()
     controller = Leap.Controller()
 
@@ -123,6 +126,7 @@ def main():
                 running = False
                 controller.remove_listener(listener)
         screen.fill((0,0,0))
+        screen.blit(heading, (400,-10))
         all_sprites.draw(screen)
         pygame.display.flip()
 

@@ -28,8 +28,11 @@ class adjustTemp(Leap.Listener):
 
     def on_frame(self, controller):
         frame = controller.frame()
+        pygame.draw.circle(self.screen, (255,0,0), (10,10), 10)
+
 
         for hand in frame.hands:
+            pygame.draw.circle(self.screen, (0,255,0), (10,10), 10)
             self.frameList.append(hand)
 
             startAngle = self.frameList[0].direction.yaw
@@ -113,7 +116,7 @@ class adjustTemp(Leap.Listener):
                 
 
 class Dial(pygame.sprite.Sprite):
-    screen = pygame.display.set_mode((750, 500))
+    screen = pygame.display.set_mode((1300, 700))
     def __init__(self,img):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
@@ -126,63 +129,63 @@ class Dial(pygame.sprite.Sprite):
     def numberChange(self,actualTemp):
         if actualTemp == 16:
             if self.image == sixteen:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 375,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 650,350
         if actualTemp == 17:
             if self.image == seventeen:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 360,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(615,275,100,150))
+                self.rect.center = 630,350
         if actualTemp == 18:
             if self.image == eighteen:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 360,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 640,350
         if actualTemp == 19:
             if self.image == nineteen:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 360,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 640,350
         if actualTemp == 20:
             if self.image == twenty:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 370,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 650,350
         if actualTemp == 21:
             if self.image == twentyone:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 370,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 650,350
         if actualTemp == 22:
             if self.image == twentytwo:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 370,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 650,350
         if actualTemp == 23:
             if self.image == twentythree:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 370,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 650,350
         if actualTemp == 24:
             if self.image == twentyfour:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(325,175,100,150))
-                self.rect.center = 370,250
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(620,275,100,150))
+                self.rect.center = 640,350
     def colourChange(self,actualTemp):
         if actualTemp > 21:
             if self.image == red:
-                self.rect.center = (375,250)
+                self.rect.center = (650,350)
             else:
-                self.rect.center = (-250,250)
+                self.rect.center = (-250,350)
         elif actualTemp >18 and actualTemp <= 21:
             if self.image == orange:
-                self.rect.center = (375,250)
+                self.rect.center = (650,350)
             else:
-                self.rect.center = (-250,250)
+                self.rect.center = (-250,350)
         elif actualTemp <= 18:
             if self.image == blue:
-                self.rect.center = (375,250)
+                self.rect.center = (650,350)
             else:
-                self.rect.center = (-250,250)
+                self.rect.center = (-250,350)
 
 
 def main():
     pygame.init()
     pygame.mixer.init()
     background_colour = (255,255,255)
-    (width, height) = (750,500)
+    (width, height) = (1300,700)
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Adjust Temperature")
@@ -238,7 +241,7 @@ def main():
         dial = Dial(colours)
         all_sprites.add(dial)
 
-    pygame.draw.circle(screen, (0,0,0), (375, 250), 100, 10)
+    pygame.draw.circle(screen, (0,0,0), (650, 350), 100, 10)
 
     listener = adjustTemp()
     controller = Leap.Controller()
@@ -252,7 +255,7 @@ def main():
                 running = False
                 controller.remove_listener(listener)
         all_sprites.draw(screen)
-        screen.blit(heading, (110,10))
+        screen.blit(heading, (350,10))
         pygame.display.flip()
 
 if __name__ == "__main__":
