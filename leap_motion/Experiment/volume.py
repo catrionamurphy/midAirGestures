@@ -125,7 +125,7 @@ class Dial(pygame.sprite.Sprite):
                 self.rect.center = 650,250
         if volume == 45:
             if self.image == fortyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(615,175,100,150))
                 self.rect.center = 650,250
         if volume == 50:
             if self.image == fifty:
@@ -133,7 +133,7 @@ class Dial(pygame.sprite.Sprite):
                 self.rect.center = 650,250
         if volume == 55:
             if self.image == fiftyfive:
-                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(625,175,100,150))
+                pygame.draw.rect(self.screen, (255,255,255), pygame.Rect(615,175,100,150))
                 self.rect.center = 650,250
         if volume == 60:
             if self.image == sixty:
