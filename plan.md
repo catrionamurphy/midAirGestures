@@ -1,9 +1,9 @@
 # Plan
 
-* PROJECT TITLE
-* YOUR NAME
-* STUDENT ID
-* SUPERVISOR NAME
+* PROJECT TITLE: Mid-Air Gesture Interaction for Passengers in Cars
+* YOUR NAME: Catriona Murphy
+* STUDENT ID: 2312695m
+* SUPERVISOR NAME: Stephen Brewster
 
 Week-by-week plan for the whole project. Update this as you go along.
 
