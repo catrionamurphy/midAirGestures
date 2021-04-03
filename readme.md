@@ -1,3 +1,12 @@
+# Structure
+The repository is set up as follows:
+* Timelog
+* 
+
+
+
+
+
 # Guidance
 This is a suggested template for a project. You can modify it as you please, but
 but remember to keep:
