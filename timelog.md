@@ -226,3 +226,172 @@
 
 ### 10 December 2020
 * *3 hours* Swipe Gesture
+
+### Winter Break
+* *10 hours* Implementing experiment- including interface
+
+## Week 11
+
+### 12 January 2021
+* *1 hour* Supervisor meeting & type up minutes
+
+### 13 January 2021
+* *1 hour* Tidied up experiment to get into working state
+
+### 16 January 2021
+* *8 hours* completed 5 experiments
+
+### 17 January 2021
+* *3 hours* completed 2 experiments
+
+### 18 January 2021
+* *1.5 hours* completed final experiment
+
+## Week 12
+
+### 19 January 2021
+* *1 hour* Supervisor Meeting & Type up minutes
+
+### 21 January 2021
+* *3 hours* Organise data and read responses thoroughly to understand them
+
+### 23 January 2021
+* *4 hours* Put Data into graphs
+* *2 hours* present graphs in a meaningful manner
+* *1 hour* start looking into analysing results
+
+### 25 January 2021
+* *2 hours* planned a follow-up survey
+
+## Week 13
+
+### 26 January 2021
+* *1 hour* Supervisor meeting & type up minutes
+
+### 28 January 2021
+* *4 hours* Worked on analysing stats for t-test
+* *2 hours* created graphs comparing t-tests
+* *1 hour* Document created with results
+
+### 30 January 2021
+* *0.5 hours* Sent follow-up survey to participants
+
+## Week 14
+
+### 2 February 2021
+* *1 hour* Supervisor meeting and type up minutes
+
+### 5 February 2021
+* *5 hours* finished statistics and analysis
+
+### 8 February 2021
+* *3 hours* Planning dissertation
+* *1 hour* Try to gather as much of the data gathered and piece together where it should go
+* *1 hour* Read through follow-up survey results
+
+## Week 15
+
+### 9 February 2021
+* *1 hour* Supervisor meeting & type up minutes
+
+### 12 February 2021
+* *4 hours* Write Intro for dissertation
+
+### 13 February 2021
+* *2 hours* Write intro for dissertation
+
+### 15 February 2021
+* *2 hours* Finding research papers on gesture elicitation
+
+### 18 February 2021
+* *6 hours* Wrote up gesture elicitation
+
+### 20 February 2021
+* *2 hours* Wrote up some NASA TLX 
+* *1.5 hours* started writing up experiment
+
+
+## Week 16
+
+### 23 February 2021
+* *1 hour* Supervisor meeting and type up minutes
+
+### 24 February 2021
+* *1 hour* Structured background
+
+## Week 17
+
+### 2 March 2021
+* *1 hour* Supervisor meeting and type up minutes
+
+### 4 March 2021
+* *3 hours* Working out latex tables
+* *2 hours* write some background
+
+## Week 18
+
+### 9 March 2021
+* *1 hour* Supervisor meeting and type up minutes
+
+### 11 March 2021 
+* *3 hours* reading on background
+* *3 hours* writing background
+
+### 12 March 2021
+* *2 hours* Finish background
+
+### 14 March 2021
+* *3 hours* Write design section
+
+## Week 19
+
+### 16 March 2021
+* *1 hour* Supervisor meeting and type up minutes
+
+### 17 March 2021
+* *1 hour* Finished design section
+* *4 hours* write experiment 
+
+### 18 March 2021
+* *8 hours* Write implementation
+
+## Week 20
+
+### 23 March 2021
+* *1 hour* Supervisor meeting and type up minutes
+
+### 26 March 2021
+* *3 hours* Edit Requirements
+* *4 hours* Find sources for code and graphics used
+
+### 30 March 2021
+* *4 hours* Start working on appendices
+* *1 hour* Learn how to format pdfs in Latex
+
+## Week 21
+
+### 1 April 2021
+* *1 hour* Supervisor meeting and type up minutes
+* *6 hours* Made edits to dissertation
+
+### 2 April 2021
+* *5 hours* Started presentation and edit dissertation
+
+### 3 April 2021
+* *4 hours* presentation
+
+### 4 April 2021
+* *2 hours* refined gesture
+* *1 hour* started creating experiment
+* *1.5 hours* Finished up presentation- just have evaluation for refined gesture left. 
+* *2 hours* Started writing up refined gesture section in dissertation
+
+### 5 April 2021
+* *3 hours* Writing discussion for evaluation
+* *1 hour* create evaluation for refined gesture
+* *2 hours* Completed 4 evaluations for refined gesture
+
+### 6 April 2021
+* *2 hours* Write up further development results.
+* *1 hour* added reference links to some appendices
+* *2 hours* Edit conclusion
