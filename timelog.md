@@ -395,3 +395,10 @@
 * *2 hours* Write up further development results.
 * *1 hour* added reference links to some appendices
 * *2 hours* Edit conclusion
+
+### 7 April 2021
+* *2 hours* Ammending any errors with appendices
+* *1 hour* Tidy up presentation
+* *3 hours* Recording presentation
+* *3 hours* Read over and fix any errors in dissertation
+* *1 hour* Write Abstract
