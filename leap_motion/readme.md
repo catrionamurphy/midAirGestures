@@ -1,3 +1,6 @@
+# Readme
+[GitHub Repository](https://github.com/catrionamurphy/midAirGestures)
+
 ## Build Instructions
 ### Software Requirements
 * Python: v2.7.0 32-bit
