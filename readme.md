@@ -7,6 +7,8 @@ The repository is set up as follows:
 * presentation: slides and video
 * dissertation: latex code for dissertation
 
+* Meeting minutes are included in the Wiki
+
 # Rebuild
 ## Hardware Required
 * Leap Motion Sensor
