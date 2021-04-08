@@ -8,11 +8,3 @@ The repository is set up as follows:
 * dissertation: latex code for dissertation
 
 * Meeting minutes are included in the Wiki
-
-# Rebuild
-## Hardware Required
-* Leap Motion Sensor
-
-## Software Requirements
-* Python v2.7
-* Leap Motion SDK Orion 
